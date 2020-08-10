@@ -1,10 +1,8 @@
 const router = require('express').Router()
+const productsController = require('../controllers/products.controller')
 
 const Product = require('../models/Product.model')
 
-router.get('/', async (req, res) => {
-    const products = await Product.find({})
-    res.status(200).send(products)
-})
+router.get('/', productsController)
 
 module.exports = router
