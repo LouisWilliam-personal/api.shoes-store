@@ -18,13 +18,16 @@ module.exports.getProducts = (req, res) => {
 
 module.exports.postProducts = (req, res) => {
 
-    const { products } = req.body
+    const { products } = req.body.products
 
     products.map((item, i) => {
         let product = new Product({
             _id: new mongoose.Types.ObjectId(),
             url: item.url,
-            name: item.name
+            productName: item.productName,
+            model: item.model,
+            price: item.price,
+            currencyUnit: item.currencyUnit
         })
 
         product
@@ -38,4 +41,10 @@ module.exports.postProducts = (req, res) => {
             msg: 'Send data successully'
         }
     )
-} 
+}
+
+module.exports.deleteProducts = (req, res) => {
+    Product.deleteMany({}, () => {
+        res.send('Deleted')
+    })
+}
