@@ -3,6 +3,7 @@ const PORT = process.env.PORT || 8080
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv').config()
+const cors = require('cors')
 
 // import routes
 const products = require('./routes/products')
@@ -14,6 +15,8 @@ mongoose.connect(process.env.MONGO_URL,
     }, () => {
         console.log('Database is connected')
     });
+
+app.use(cors())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
