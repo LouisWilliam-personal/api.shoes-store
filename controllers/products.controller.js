@@ -7,11 +7,9 @@ module.exports.getProducts = (req, res) => {
     Product
         .find()
         .then((result) => {
-            console.log(result);
             res.status(200).json(result);
         })
         .catch((e) => {
-            console.log(e);
             res.status(500).json(e);
         })
 }
