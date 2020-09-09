@@ -14,7 +14,8 @@ mongoose.connect(process.env.MONGO_URL,
         useUnifiedTopology: true,
     }, () => {
         console.log('Database is connected')
-    });
+    }
+)
 
 app.use(cors())
 
