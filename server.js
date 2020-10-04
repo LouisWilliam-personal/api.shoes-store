@@ -1,12 +1,14 @@
+require('dotenv').config()
+
 const app = require('express')()
 const PORT = process.env.PORT || 8080
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-require('dotenv').config()
 const cors = require('cors')
 
 // import routes
 const products = require('./routes/products')
+const auth = require('./routes/auth')
 
 mongoose.connect(process.env.MONGO_URL,
     {
@@ -27,6 +29,7 @@ app.use(bodyParser.json())
 
 //using router middleware
 app.use('/products', products)
+app.use('/auth', auth)
 
 //start welcome page
 app.get('/', (req, res) => {
